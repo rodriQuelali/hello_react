@@ -1,22 +1,25 @@
-import logo from './logo.svg';
+
+
 import './App.css';
+import TaskList from './components/TaskList';
+import { useState } from 'react';
 
 function App() {
+  const tasks = ["Estudiar calculo", "Estudiar Progra", "haver tesis"];
+  const [showTasks, setShowTasks] = useState(false);
+
+
+  const handleOnShow = () =>{
+    setShowTasks(!showTasks);
+  }
   return (
-    <div className="App">
+    <div className="App" key>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hola rodrigo quelali <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>TODO list</h1>
+        <button onClick = {handleOnShow}>Show</button>
+        {
+          showTasks && <TaskList tasks={tasks}/>
+        }
       </header>
     </div>
   );
